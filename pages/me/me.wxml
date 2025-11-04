@@ -1,16 +1,20 @@
 <block wx:if="{{username}}">
   <view class="container">
     <view class="username">{{username}}</view>
-    <the-button size="small" text="退出登录" bind:the_tap="logout"></the-button>
-    <navigator url="/pages/questions/questions?pageType=1">
-      <the-button size="small" text="浏览记录"></the-button>
-    </navigator>
-    <navigator url="/pages/questions/questions?pageType=2">
-      <the-button size="small" text="我的题目"></the-button>
-    </navigator>
-    <navigator url="/pages/questions/questions?pageType=3">
-      <the-button size="small" text="收藏列表"></the-button>
-    </navigator>
+    <mp-cells ext-class="my-cells">
+      <view bind:tap="logout">
+        <mp-cell value="退出登录" link></mp-cell>
+      </view>
+      <navigator url="/pages/questions/questions?pageType=1">
+        <mp-cell value="浏览记录" link></mp-cell>
+      </navigator>
+      <navigator url="/pages/questions/questions?pageType=2">
+        <mp-cell value="我的题目" link></mp-cell>
+      </navigator>
+      <navigator url="/pages/questions/questions?pageType=3">
+        <mp-cell value="收藏列表" link></mp-cell>
+      </navigator>
+    </mp-cells>
   </view>
 </block>
 <block wx:else>
