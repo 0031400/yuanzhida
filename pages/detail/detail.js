@@ -43,7 +43,7 @@ Page({
   updateQuestionInfo: function () {
     const { solvedFlag, viewCount, categoryId, commentCount, username, likeCount, userId, likeStatus } = this.data.question
     this.selectComponent('#question-info').initData({
-      solvedFlag, viewCount, commentCount, likeCount, entityUserId: userId, categoryId, username, questionId: this.data.questionId, likeStatus
+      solvedFlag, viewCount, commentCount, likeCount, entityUserId: userId, categoryId, username, questionId: this.data.questionId, likeStatus, canConduct: true
     })
   },
   updateQuestion: function () {

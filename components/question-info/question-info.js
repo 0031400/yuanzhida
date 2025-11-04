@@ -12,7 +12,9 @@ Component({
     likeStatus: '未登录',
     isOwn: false,
     username: '',
-    categoryId: 0
+    categoryId: 0,
+    // where can good or collect 
+    canConduct: false,
   },
   methods: {
     initData: function (d) {
@@ -38,6 +40,7 @@ Component({
       })
     },
     likeQuestion: function () {
+      if (!this.data.canConduct) return 
       if (this.data.likeStatus == '未登录') {
         interact.errorToast('未登录')
         return
