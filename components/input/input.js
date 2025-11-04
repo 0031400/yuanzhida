@@ -9,7 +9,7 @@ Component({
   },
   methods: {
     onInput: function (e) {
-      this.setData({ value: e.detail.value.trim() })
+      this.setData({ value: e.detail.value })
       this.trigger()
     },
     trigger: function () {
