@@ -29,5 +29,6 @@ export const api = {
   myComments: { url: '/api/answerly/v1/comment/my/page' },
   myQuestions: { url: '/api/answerly/v1/question/my/page' },
   sendResetPasswordCode: { url: '/api/answerly/v1/user/send-reset-password-code' },
-  resetPassword: { url: '/api/answerly/v1/user/reset-password', method: 'POST' }
+  resetPassword: { url: '/api/answerly/v1/user/reset-password', method: 'POST' },
+  collectQuestion: { url: '/api/answerly/v1/question/collect', method: 'POST' }
 }

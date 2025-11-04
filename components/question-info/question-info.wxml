@@ -17,6 +17,10 @@
       {{likeCount}}
     </view>
     <view class="item">
+      <image bind:tap="collectQuestion" class="icon" src="{{collectStatus=='已收藏'?'/assets/image/collect.svg':'/assets/image/uncollect.svg'}}" mode="heightFix" />
+      {{collectCount}}
+    </view>
+    <view class="item">
       <image class="icon" src="/assets/image/comment.svg" mode="heightFix" />
       {{commentCount}}
     </view>

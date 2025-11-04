@@ -189,3 +189,6 @@ export function historyQuestions(p) {
   const { url } = api.historyQuestions
   return request({ url, header: getHeader(), params: p })
 }
+export function collectQuestion(id, entityUserId) {
+  return request({ url: api['collectQuestion'].url, method: api['collectQuestion'].method, data: { id: id, entityUserId: entityUserId }, header: getHeader() })
+}
