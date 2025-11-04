@@ -67,5 +67,5 @@ export function GenerateNumList(a, b) {
 // "2025-10-15T05:27:00.000+00:00" -> "2025-10-15 05:27"
 function parseTime(time) {
   const t = new Date(time)
-  return `${t.getFullYear()}-${('' + t.getMonth()).padStart(2, '0')}-${('' + t.getDate()).padStart(2, '0')} ${('' + t.getHours()).padStart(2, '0')}:${('' + t.getMinutes()).padStart(2, '0')}`
+  return `${t.getFullYear()}-${('' + (t.getMonth() + 1)).padStart(2, '0')}-${('' + t.getDate()).padStart(2, '0')} ${('' + t.getHours()).padStart(2, '0')}:${('' + t.getMinutes()).padStart(2, '0')}`
 }
