@@ -192,3 +192,6 @@ export function historyQuestions(p) {
 export function collectQuestion(id, entityUserId) {
   return request({ url: api['collectQuestion'].url, method: api['collectQuestion'].method, data: { id: id, entityUserId: entityUserId }, header: getHeader() })
 }
+export function messageSummary() {
+  return request({ url: api['messageSummary'].url, header: getHeader() })
+}

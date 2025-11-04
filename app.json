@@ -13,7 +13,8 @@
     "components-demo/input-group/input-group",
     "components-demo/captcha/captcha",
     "components-demo/pagination/pagination",
-    "components-demo/questions/questions"
+    "components-demo/questions/questions",
+    "pages/message/message"
   ],
   "tabBar": {
     "color": "0x000000",

@@ -30,5 +30,6 @@ export const api = {
   myQuestions: { url: '/api/answerly/v1/question/my/page' },
   sendResetPasswordCode: { url: '/api/answerly/v1/user/send-reset-password-code' },
   resetPassword: { url: '/api/answerly/v1/user/reset-password', method: 'POST' },
-  collectQuestion: { url: '/api/answerly/v1/question/collect', method: 'POST' }
+  collectQuestion: { url: '/api/answerly/v1/question/collect', method: 'POST' },
+  messageSummary: { url: '/api/answerly/v1/message/summary' }
 }
