@@ -180,3 +180,11 @@ export function historyQuestions(p) {
   const { url } = api.historyQuestions
   return request({ url, header: getHeader(), params: p })
 }
+export function getUserName({mail} = {}) {
+  return request({
+    url: api['getUserName'].url,
+    method: api['getUserName'].method,
+    params: {mail: mail},
+    header: getHeader()
+  });
+}

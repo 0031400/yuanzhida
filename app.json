@@ -7,6 +7,7 @@
     "pages/register/register",
     "pages/questions/questions",
     "pages/detail/detail",
+    "pages/findUserName/findUserName",
     "components-demo/subjects-selector/subjects-selector",
     "components-demo/images-input/images-input",
     "components-demo/input-group/input-group",

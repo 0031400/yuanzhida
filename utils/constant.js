@@ -27,5 +27,6 @@ export const api = {
   historyQuestions: { url: '/api/answerly/v1/question/recent/page' },
   collectedQuestions: { url: '/api/answerly/v1/question/collect/my/page' },
   myComments: { url: '/api/answerly/v1/comment/my/page' },
-  myQuestions: { url: '/api/answerly/v1/question/my/page' }
+  myQuestions: { url: '/api/answerly/v1/question/my/page' },
+  getUserName: { url: '/api/answerly/v1/user/forget-username', method: 'GET' }
 }

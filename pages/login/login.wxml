@@ -3,6 +3,11 @@
   <view class="image-container">
   <the-button size="small" text="显示验证码" bind:the_tap="showCaptcha"></the-button>
   </view>
+  <view class="image-container">
+    <navigator url="/pages/findUserName/findUserName">
+      <the-button size="small" text="找回用户名"></the-button>
+    </navigator>
+  </view>
 </view>
 <view class="backgroud" wx:if="{{captchaShow}}" bind:tap="hideCaptcha"></view>
 <the-captcha class="captcha" wx:if="{{captchaShow}}" bind:submit="onSubmitLogin"></the-captcha>

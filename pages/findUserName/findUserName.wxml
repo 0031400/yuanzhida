@@ -1,0 +1,7 @@
+<view class="container">
+  <the-input-group id="input-group" inputItems="{{inputItems}}" bind:input="onInput"></the-input-group>
+  <view>
+    <the-button bind:tap="getUserName" size="small" text="确定"></the-button>
+  </view>
+  <view class="showUserName" wx:if="{{userNameShow}}">{{userName}}</view>
+</view>
