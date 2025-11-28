@@ -1,11 +1,11 @@
 var api = require('../../utils/api.js')
+const interact = require('../../utils/interact')
 Page({
   data: {
     outputItems: {},
     codeButtonText: '获取验证码',
     codeButtonDisabled: false,
     countdownTime: 0,
-    isLoading: false
   },
   onLoad: function () {
     this.selectComponent('#input-group').initData({
@@ -21,64 +21,18 @@ Page({
   onInput: function (e) {
     this.setData({ outputItems: e.detail })
   },
-  // 获取验证码
   onGetCode: function () {
-    const { username, mail } = this.data.outputItems
-
-    // 表单验证
-    if (!username) {
-      wx.showToast({
-        title: '请输入用户名',
-        icon: 'error'
-      })
-      return
-    }
-
-    if (!mail) {
-      wx.showToast({
-        title: '请输入邮箱',
-        icon: 'error'
-      })
-      return
-    }
-
-    // 简单的邮箱格式验证
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(mail)) {
-      wx.showToast({
-        title: '请输入有效的邮箱',
-        icon: 'error'
-      })
-      return
-    }
-
-    this.setData({ isLoading: true })
-
-    api.sendResetPasswordCode({ mail }).then(res => {
-      wx.showToast({
-        title: '验证码已发送到邮箱'
-      })
-
-      // 开始倒计时
+    api.sendResetPasswordCode({ mail: this.data.outputItems.mail }).then(() => {
+      wx.showToast({ title: '验证码已发送到邮箱' })
       this.startCountdown()
-    }).catch(err => {
-      wx.showToast({
-        title: err || '获取验证码失败',
-        icon: 'error'
-      })
-      this.setData({ isLoading: false })
-    })
+    }).catch(interact.errorToast)
   },
-
-  // 倒计时逻辑
   startCountdown: function () {
     let countdownTime = 60
     this.setData({
       codeButtonDisabled: true,
-      countdownTime: countdownTime,
-      isLoading: false
+      countdownTime: countdownTime
     })
-
     const countdownInterval = setInterval(() => {
       countdownTime--
       this.setData({
@@ -97,54 +51,15 @@ Page({
     }, 1000)
   },
 
-  // 重置密码
   onResetPassword: function () {
     const { username, code, newPassword, confirmPassword } = this.data.outputItems
-
-    // 表单验证
-    if (!username || !code || !newPassword || !confirmPassword) {
-      wx.showToast({
-        title: '请填写所有字段',
-        icon: 'error'
-      })
-      return
-    }
-
     if (newPassword !== confirmPassword) {
-      wx.showToast({
-        title: '两次输入的密码不一致',
-        icon: 'error'
-      })
+      wx.showToast({ title: '两次输入的密码不一致', icon: 'error' })
       return
     }
-
-    if (newPassword.length < 6) {
-      wx.showToast({
-        title: '密码长度至少6位',
-        icon: 'error'
-      })
-      return
-    }
-
-    this.setData({ isLoading: true })
-
-    api.resetPassword({ username, code, newPassword }).then(res => {
-      wx.showToast({
-        title: '重置密码成功',
-        duration: 1500
-      })
-
-      setTimeout(() => {
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-      }, 1500)
-    }).catch(err => {
-      wx.showToast({
-        title: err || '重置密码失败',
-        icon: 'error'
-      })
-      this.setData({ isLoading: false })
-    })
+    api.resetPassword({ username, code, newPassword }).then(() => {
+      wx.showToast({ title: '重置密码成功', duration: 1500 })
+      setTimeout(() => { wx.navigateTo({ url: '/pages/login/login' }) }, 1500)
+    }).catch(interact.errorToast)
   }
 })
