@@ -41,3 +41,6 @@ export function newQuestion({ title, content }) {
 export function resetPassword({ username, code, newPassword }) {
   return username_validate(username) || code_validate(code) || password_validate(newPassword)
 }
+export function newAnswer({content}){
+  return  length_validate(content,"内容",5,200)
+}

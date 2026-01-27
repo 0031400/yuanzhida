@@ -102,6 +102,8 @@ export function newQuestion(data) {
   })
 }
 export function newAnswer(d) {
+  const validate_result = validate.newAnswer(d)
+  if (validate_result) return validate_result
   return ImagesMiddleware(d).then(res => {
     request({ url: api['newAnswer'].url, method: api['newAnswer'].method, header: getHeader(), data: res })
   })
