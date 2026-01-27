@@ -132,6 +132,7 @@ Page({
         title: '提交成功',
       })
       this.selectComponent('#input-group').clear()
+      this.closeInput()
       this.updateComments()
     }).catch(interact.errorToast)
   },
