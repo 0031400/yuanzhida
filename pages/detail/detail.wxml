@@ -1,5 +1,5 @@
 <view class="page">
-  <scroll-view class="container" style="height :{{containerHeight}}rpx" scroll-y="true" bindscrolltolower="scrollToLower">
+  <scroll-view    class="container" style="height :{{containerHeight}}rpx" scroll-y="true" bindscrolltolower="scrollToLower">
     <view class="main">
       <view class="question-box">
         <view class="title">{{question.title}}</view>

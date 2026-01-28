@@ -37,3 +37,7 @@
   padding: 10rpx;
   padding-bottom: 0rpx;
 }
+.childComment{
+  position: relative;
+  left: 20px;
+}

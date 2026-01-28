@@ -1,10 +1,18 @@
 <view class="container">
-  <view class="item" wx:for="{{comments}}" wx:key="id">
-    <view class="comment-container">
-      <the-user-and-time class="user-and-time"></the-user-and-time>
-      <view class="content">{{item.content}}</view>
-      <the-images-preview class="images-preview" images="{{item.images}}"></the-images-preview>
-      <the-comment-info data-id="{{item.id}}" bind:correntComment="onCorrentComment" bind:update="onUpdate" class="comment-info"></the-comment-info>
-    </view>
+  <view class="item">
+    <block wx:for="{{comments}}" wx:key="id">
+      <view class="comment-container">
+        <the-user-and-time data-id="{{item.id}}" data-topCommentId="{{0}}" class="user-and-time"></the-user-and-time>
+        <view class="content">{{item.content}}</view>
+        <the-images-preview class="images-preview" images="{{item.images}}"></the-images-preview>
+        <the-comment-info data-id="{{item.id}}" bind:correntComment="onCorrentComment" bind:update="onUpdate" class="comment-info"></the-comment-info>
+      </view>
+      <view wx:for="{{item.childComments}}" wx:key="id" wx:for-item="childComment" class="comment-container childComment">
+        <the-user-and-time class="user-and-time" data-id="{{childComment.id}}" data-topCommentId="{{childComment.topCommentId}}"></the-user-and-time>
+        <view class="content">{{childComment.content}}</view>
+        <the-images-preview class="images-preview" images="{{childComment.images}}"></the-images-preview>
+        <!-- <the-comment-info data-id="{{childComment.id}}" bind:correntComment="onCorrentComment" bind:update="onUpdate" class="comment-info"></the-comment-info> -->
+      </view>
+    </block>
   </view>
 </view>

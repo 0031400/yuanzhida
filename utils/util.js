@@ -8,6 +8,7 @@ export function toVisibleImages(images) {
   return images.map(i => toVisibleImage(i))
 }
 function parseImageStr(s) {
+  if(!s)return []
   return s.length ? s.split(',') : []
 }
 // used in init and page subjects
@@ -30,6 +31,9 @@ export function modifyItemList(l) {
   const newL = []
   for (let i of l) {
     i = modifyItem(i)
+    for (let j = 0; j < i.childComments.length; j++) {
+      i.childComments[j] = modifyItem(i.childComments[j])
+    }
     newL.push(i)
   }
   return newL

@@ -18,9 +18,16 @@ Component({
     updateUserAndTime: function () {
       const els = this.selectAllComponents('.user-and-time')
       for (let i in els) {
+        const { id, topcommentid:topCommentId } = els[i].dataset
+        let comment
+        if (topCommentId) {
+          const topComment = this.data.comments.filter(j => j.id == topCommentId)[0]
+          comment = topComment.childComments.filter(j => j.id == id)[0]
+        } else {
+          comment = this.data.comments.filter(j => j.id == id)[0]
+        }
         els[i].initData({
-          username: this.data.comments[i].username,
-          time: this.data.comments[i].createTime
+          username: comment.username, time: comment.createTime
         })
       }
     },
@@ -59,13 +66,11 @@ Component({
       }
     },
     appendComments: function (e) {
-      console.log(e)
       const loadedComments = this.data.comments
       loadedComments.push(e)
       this.setData({
-        comments:loadedComments
+        comments: loadedComments
       })
-      console.log(this.data.comments)
       this.updateUserAndTime()
       this.updateCommentInfo()
       this.updateImagesPreview()
