@@ -39,12 +39,12 @@ export function login_validate({username, password}){
   return username_validate(username) ||
   password_validate(password) 
 }
-export function newQuestion({ title, content }) {
+export function newQuestion_validate({ title, content }) {
   return title_validate(title) || content_validate(content)
 }
-export function resetPassword({ username, code, newPassword }) {
+export function resetPassword_validate({ username, code, newPassword }) {
   return username_validate(username) || code_validate(code) || password_validate(newPassword)
 }
-export function newAnswer({content}){
+export function newAnswer_validate({content}){
   return  length_validate(content,"内容",5,200)
 }
