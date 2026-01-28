@@ -5,9 +5,10 @@ const validate = require('./validate')
 function getHeader() {
   return { 'username': auth.getUsername(), 'token': auth.getToken() }
 }
-export function login(d) {
-  const { cookie, ...newD } = d
-  return request({ method: api['login'].method, url: api['login'].url, header: { 'cookie': cookie }, data: newD }).then(res => res.token)
+export function login( { cookie, username, password, code  }) {
+  let validate_result = validate.login_validate({username, password})
+  if (validate_result) return validate_result
+  return request({ method: api['login'].method, url: api['login'].url, header: { 'cookie': cookie }, data: {username, password, code} }).then(res => res.token)
 }
 export function register(data) {
   let validate_result = validate.register(data)

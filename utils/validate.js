@@ -35,6 +35,10 @@ export function register({ username, password, mail, code }) {
     password_validate(password) ||
     code_validate(code)
 }
+export function login_validate({username, password}){
+  return username_validate(username) ||
+  password_validate(password) 
+}
 export function newQuestion({ title, content }) {
   return title_validate(title) || content_validate(content)
 }

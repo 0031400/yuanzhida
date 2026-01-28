@@ -131,9 +131,11 @@ Page({
       wx.showToast({
         title: '提交成功',
       })
-      this.selectComponent('#input-group').clear()
-      this.closeInput()
-      this.updateComments()
+      setTimeout(() => {
+        this.updateComments()
+        this.selectComponent('#input-group').clear()
+        this.closeInput()
+      }, 1500);
     }).catch(interact.errorToast)
   },
   onCommmentRedirect: function (e) {
@@ -182,6 +184,7 @@ Page({
       setTimeout(() => {
         this.updateComments()
         this.selectComponent('#input-group').clear()
+        this.closeInput()
       }, 1500);
     }).catch(err => {
       wx.hideLoading()
